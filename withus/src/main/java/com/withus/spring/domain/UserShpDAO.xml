@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withus.spring.domain.UserShpDAO">
+
+	<!-- 배송 페이지 -->
+	<select id="selectByShp"
+		resultType="com.withus.spring.domain.UserShpDTO">
+		Select * FROM Delivery ORDER BY dv_num desc;
+	</select>
+	
+	<!-- dvnum  -->
+	<select id="dvnumByShp"
+		resultType="com.withus.spring.domain.UserShpDTO">
+			select dv_prnum prnum, dv_num num, dv_useremail useremail
+			from Delivery 
+			where dv_prnum = #{prnum}
+	</select>
+	
+	<select id="countAll" resultType="int">
+		SELECT count(*) FROM Delivery;
+	</select>
+	
+	<!-- 배송 작성 페이지 -->
+		<insert id="writeShp" flushCache="true">
+		INSERT INTO Delivery
+			(dv_addr, dv_content)
+		VALUES
+			(#{dv_addr}, #{dv_content})		
+	</insert>
+	
+	
+	<!-- 배송 페이지 수정 -->
+	<update id="updateShp" flushCache="true">
+		UPDATE Delivery
+		SET dv_addr = #{dv_addr}, dv_content = #{dv_content}
+		WHERE dv_prnum = #{dv_prnum};
+	</update>
+	
+	
+</mapper>

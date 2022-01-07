@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+
+footer {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	color: white;
+}
+
+.btn-menu{
+	text-align: center;
+}
+
+.btn-menu>li{
+	padding: 80px 60px ;
+	display: inline-block ;
+}
+
+div.profile{
+	padding: 50px 20px; 
+	text-align: center;
+	display: inline-block ;
+}
+
+

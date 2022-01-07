@@ -1,0 +1,323 @@
+/* 湲곕낯 �꽕�젙 */
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	z-index: 0;
+	font-family: 'Pretendard-Regular';
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+/* header �꽕�젙 */
+.header-bar {
+	z-index: 3;	
+}
+
+.header-bar {
+	height: 100px;
+	margin-top: 50px;
+	margin-bottom: 70px;
+}
+
+.header-bar .header-bar-small {
+	display: block;
+	float: left;
+	width: 150px;
+	margin-right: 30px;
+}
+
+.header-bar .header-bar-small .header-logo {
+	margin-left: 50px;
+	float: right;
+}
+
+.header-logo img {
+	width: 100%;
+	height: 64px;
+}
+
+.header-bar .header-bar-small .header-btn {
+	float: right;
+}
+
+.header-bar .signin-btn .headBtn {
+	margin-right: 80px;
+	border: 2px solid #8ab6d6;
+	border-radius: 5px;
+	padding: 8px 20px;
+	line-height: 30px;
+	vertical-align: middle;
+	font-size: 24px;
+	font-family: 'Pretendard-Regular';
+	color: white;
+	background-color: #8ab6d6;
+	cursor: pointer;
+}
+
+.header-bar .signin-btn .headA {
+	margin-right: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	color: black;
+	font-size: 36px;
+}
+
+.header-bar .signin-btn .headBtn:hover {
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+	color: black;
+}
+
+.header-nav {
+	line-height: 55px;
+}
+
+.header-nav ul li {
+	display: block;
+	margin-left: 8px;
+	font-size: 32px;
+	font-family: 'Pretendard-Regular';
+}
+
+.header-nav ul li a:hover {
+	border-bottom: 2px solid #0061a8;
+}
+
+.more:hover {
+	border-bottom: 2px solid #0061a8;
+	cursor: pointer;
+}
+
+.header-nav ul li:last-child {
+	position: relative;
+	height: 44px;
+	padding-bottom: 1px;
+}
+
+li, a {
+	color: #131e61;
+	font-weight: bold;
+}
+
+.more {
+	height: 47px !important;
+}
+
+.more-ul {
+	position: absolute;
+	line-height: 32px;
+}
+
+.more-ul li:first-child {
+	margin-top: 3px !important;
+}
+
+.more-ul li {
+	display: block;
+	margin: 0 10px !important;
+	padding: 6px 4px;
+	width: 80px;
+	height: 39px !important;
+	text-align: center;
+	font-size: 16px !important;
+}
+
+.more-ul li:hover {
+	border-radius: 3px;
+	background-color: #8ab6d6;
+}
+
+/* footer */
+.footer-bar {
+	margin-top: 70px;
+	margin-bottom: 30px;
+	font-family: 'Pretendard-Regular';
+}
+
+.footer-sns {
+	margin-left: 250px;
+}
+
+.footer-sns li {
+	display: inline-block;
+	margin-left: 2px;
+	margin-right: 25px;
+	font-size: 25px;
+}
+
+.footer-info {
+	margin-right: 250px;
+}
+
+.footer-info li {
+	margin-top: 3px;
+}
+
+.footer-info li:last-child {
+	margin-top: 7px;
+}
+
+.footer-btn {
+	text-align: center;
+	width: 160px; 
+	margin-left: 250px;
+	padding: 8px 12px;
+	border: 2px solid #2978b5;
+	border-radius: 5px;
+	color: white;
+	font-weight: lighter;
+	background-color: #2978b5;
+	cursor: pointer;
+}
+
+.footer-btn:hover {
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+	color: black;
+}
+
+.footer-bar .copylight {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 176px;
+}
+
+.header-bar .header-btn {
+	display: none;
+}
+/* �옉�� �솕硫� */
+@media screen and (max-width: 1079px) {
+	/* header */
+	.header-bar {
+		height: 130px;
+	}
+	
+	.header-bar .signin-btn {
+		display: block;
+		float: right;
+	}
+	.signin-btn .headBtn {
+		margin-right: 30px !important;
+	}
+	.header-bar .header-bar-small {
+		display: block;
+		float: left;
+		width: 160px;
+		margin: 0 auto;
+	}
+	.header-btn span {
+		font-size: 24px;
+		line-height: 55px;
+	}
+	.header-logo {
+		margin-left: 10px !important;
+		width: 80px;
+	}
+	.header-logo img {
+		width: 100%;
+	}
+	.header-bar-small .header-btn {
+		display: block;
+		float: left !important;
+		margin-left: 30px;
+		border: none;
+		outline: none;
+		background-color: white;
+		font-size: 32px;
+		opacity: 1;
+		cursor: pointer;
+	}
+	.header-bar-small .header-btn:hover {
+		color: rgba(0, 0, 0, 0.3);
+	}
+	.header-nav {
+		display: none;
+		float: left;
+		margin-left: 16px;
+	}
+	.header-nav>ul {
+		height: 130px;
+	}
+	.header-nav>ul li {
+		margin-left: 20px;
+		height: 38px;
+		line-height: 38px;
+		font-size: 24px;
+	}
+	.header-nav .more {
+		padding-bottom: 0px !important;
+		height: 36px !important;
+		font-size: 22px;
+	}
+	.more .more-ul li {
+		padding: 6px 4px !important;
+		width: 70px;
+		height: 27px !important;
+		line-height: 27px;
+	}
+
+	/* footer */
+	.footer-bar .footer-sns {
+		float: none;
+		margin: 10px auto;
+		width: 139px;
+	}
+	.footer-bar .footer-sns li:last-child {
+		margin-right: 0;
+	}
+	.footer-bar .footer-info {
+		float: none;
+		margin: 30px auto;
+		width: 236px;
+	}
+	.footer-bar .footer-info li {
+		text-align: center;
+	}
+	.footer-bar .footer-btn {
+		float: none;
+		display: block;
+		margin: 30px auto;
+	}
+}
+
+@media ( min-width : 1080px) {
+	.header-nav {
+		display: block !important;
+	}
+	.header-nav>ul {
+		display: flex;
+	}
+}

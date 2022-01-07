@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+.myprj-button{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  background: var(--button-bg-color);
+  color: var(--button-color);
+  
+  margin: 0;
+  padding: 0.5rem 1rem;
+  
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  
+  border: none;
+  border-radius: 2px;
+  
+  display: inline-block;
+  width: auto;
+  
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  cursor: pointer;
+  
+  transition: 0.5s;
+  
+  --button-color: #ffffff;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #025ce2;
+  
+}
+
+.myprj-button:active,
+.myprj-button:hover,
+.myprj-button:focus {
+  background: var(--button-hover-bg-color);
+  outline: 0;
+}
+.myprj-button:disabled {
+  opacity: 0.5;
+}
+
+.header-myp {
+    height: 300px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.header-myp .header-myp-small {
+    display: block;
+    float: left;
+    top:10px;
+    width: 20px;
+}
+
+.header-myp .header-myp-small .header-myp-logo {
+    margin-left: 10px;
+    display: block;
+    float: center;
+    font-size: 32px;
+    font-family: 'Pretendard-Regular';
+}
+
+.header-myp-logo img {
+   width: 30%;
+   
+}
+
+.header-myp-bar .header-myp-small .header-myp-btn {
+    float: right;
+}
+
+/* header 설정 */
+.header-prf {
+    height: 100px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.header-prf .header-prf-small {
+    display: block;
+    float: left;
+    
+    width: 150px;
+}
+
+.header-prf .header-prf-small .header-prf-logo {
+    margin-left: 20px;
+    display: block;
+    float: right;
+    
+    font-size: 32px;
+    font-family: 'Pretendard-Regular';
+}
+
+.header-prf-logo img {
+   width: 80%;
+}
+
+.header-prf-bar .header-prf-small .header-prf-btn {
+    float: right;
+}
+
+.mp-button{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  background: var(--button-bg-color);
+  color: var(--button-color);
+  
+  margin: 0;
+  padding: 0.5rem 1rem;
+  
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  float: right;
+  
+  border: none;
+  border-radius: 2px;
+  
+  display: inline-block;
+  width: auto;
+  
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  cursor: pointer;
+  
+  transition: 0.5s;
+  
+  --button-color: #ffffff;
+  --button-bg-color: #0d6efd;
+  --button-hover-bg-color: #025ce2;
+  
+}

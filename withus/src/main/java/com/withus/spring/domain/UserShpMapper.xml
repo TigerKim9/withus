@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withus.spring.domain.UserShpDAO">
+
+	<!-- 배송 페이지 -->
+	<select id="ShpFromRow"
+		resultType="com.withus.spring.domain.UserShpDTO">
+		<![CDATA[    
+		SELECT
+			dv_num num, 
+			dv_addr addr, 
+			dv_check chk, 
+			dv_userid urid, 
+			dv_prnum pnum,
+			dv_content ctnt,
+			
+		FROM 
+			Delivery
+		ORDER BY 
+			dv_num DESC
+		LIMIT #{from}, #{pageRows}
+		]]>
+	</select>
+	
+	<update id="update" flushCache="true">
+		UPDATE Delivery
+		SET dv_addr addr = #{addr}, dv_check chk = #{chk}, dv_userid urid = #{urid}
+		,dv_content ctnt
+		WHERE dv_num = #{num}	
+	</update>
+	
+	
+	
+	<!-- 배송 삭제 -->
+	<delete id="deleteByUid" flushCache="true"
+ 	 	parameterType="java.util.ArrayList">
+ 	 	DELETE FROM Delivery
+ 	 	WHERE dv_num in (
+ 	 		<foreach collection="array" item="item" index="index" separator=",">
+ 	 			${item}
+ 	 		</foreach>
+ 	 	) 	 
+ 	 </delete>
+ 	 
+	
+	
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

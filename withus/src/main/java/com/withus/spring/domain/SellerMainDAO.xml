@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.SellerMainDAO">
+
+<select id="untilToday" resultType="com.withus.spring.domain.SellerMainDTO">
+select f_prnum prnum,f_fundingdate fundingdate, pf_itemprice itemprice, sum(pf.pf_itemprice)as sumprice , count(f_prnum)as count 
+from funded f left join project_funding pf ON f.f_prnum =pf.pf_prnum where f.f_fundingdate between date_add(now(),interval-1 day)and now();
+</select>
+
+<select id="untilWeek" resultType="com.withus.spring.domain.SellerMainDTO">
+select f_prnum prnum,f_fundingdate fundingdate, pf_itemprice itemprice, sum(pf.pf_itemprice)as sumprice , count(f_prnum)as count 
+from funded f left join project_funding pf ON f.f_prnum =pf.pf_prnum where f.f_fundingdate between date_add(now(),interval-1 week)and now();
+</select>
+
+<select id="untilMonth" resultType="com.withus.spring.domain.SellerMainDTO">
+select f_prnum prnum,f_fundingdate fundingdate, pf_itemprice itemprice, sum(pf.pf_itemprice)as sumprice , count(f_prnum)as count 
+ from funded f left join project_funding pf ON f.f_prnum =pf.pf_prnum where f.f_fundingdate between date_add(now(),interval-1 month)and now();
+</select>
+
+<select id="comingsoonProject" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(pf_prnum) count
+from project_funding pf where date_format(pf_startdate,'%Y-%m-%d')&lt;now();
+</select>
+
+<select id="openingProject" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(pf_prnum) count
+from project_funding pf where date_format(pf_startdate,'%Y-%m-%d')&gt;now();
+</select>
+
+ <select id="seller_untilToday" resultType="com.withus.spring.domain.SellerMainDTO">
+select sum(pf_itemprice) as sumprice from project_funding pf ,funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and f.f_fundingdate between date_add(now(),interval-1 day)and now();
+</select>
+
+ <select id="seller_untilWeek" resultType="com.withus.spring.domain.SellerMainDTO">
+select sum(pf_itemprice) as sumprice from project_funding pf ,funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and f.f_fundingdate between date_add(now(),interval-1 week)and now();
+</select>
+
+<select id="seller_untilMonth" resultType="com.withus.spring.domain.SellerMainDTO">
+select sum(pf_itemprice) as sumprice from project_funding pf ,funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and f.f_fundingdate between date_add(now(),interval-1 month)and now();
+</select> 
+
+<select id="seller_comingsoonProject" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(pf_prnum) as count from project_funding pf where pf_selid =#{selid} and date_format(pf_startdate,'%Y-%m-%d')&lt;now();
+</select> 
+
+<select id="seller_openingProject" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(pf_prnum) as count from project_funding pf where pf_selid =#{selid} and date_format(pf_startdate,'%Y-%m-%d')&gt;now();
+</select> 
+
+<select id="seller_likeCount" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(lk_likecnt) as count from likes l ,project_funding pf where l.lk_likecnt =1 and l.lk_prnum =pf.pf_prnum and pf.pf_selid =#{selid};
+</select>
+
+<select id="seller_totalPrice" resultType="com.withus.spring.domain.SellerMainDTO">
+select sum(pf_itemprice) as sumprice from project_funding pf, funded f where pf.pf_prnum =f.f_prnum and pf_selid=#{selid};
+</select>
+
+<select id="seller_category" resultType="com.withus.spring.domain.SellerMainDTO">
+select pf_category category,count(*) as count from project_funding pf where pf_selid =#{selid} group by pf_category ;
+</select>
+
+<select id="seller_firstQuarter" resultType="com.withus.spring.domain.SellerMainDTO">
+select ifnull(sum(pf_itemprice),0) sumprice from project_funding pf, funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and year(f.f_fundingdate) and quarter(f.f_fundingdate)=1;
+</select>
+
+<select id="seller_secondQuarter" resultType="com.withus.spring.domain.SellerMainDTO">
+select ifnull(sum(pf_itemprice),0) sumprice from project_funding pf, funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and year(f.f_fundingdate) and quarter(f.f_fundingdate)=2;
+</select>
+
+<select id="seller_thridQuarter" resultType="com.withus.spring.domain.SellerMainDTO">
+select ifnull(sum(pf_itemprice),0) sumprice from project_funding pf, funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and year(f.f_fundingdate) and quarter(f.f_fundingdate)=3;
+</select>
+
+<select id="seller_fourthQuarter" resultType="com.withus.spring.domain.SellerMainDTO">
+select ifnull(sum(pf_itemprice),0) sumprice from project_funding pf, funded f where pf.pf_prnum =f.f_prnum and pf_selid =#{selid} and year(f.f_fundingdate) and quarter(f.f_fundingdate)=4;
+</select>
+
+<select id="seller_visitorCount" resultType="com.withus.spring.domain.SellerMainDTO">
+select sum(pf_viewcnt) sumprice from project_funding pf where pf_selid =#{selid} ;
+</select>
+
+<select id="seller_supportCount" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(pf.pf_prnum) as count from project_funding pf ,funded f where pf_prnum =f.f_prnum and pf_selid =#{selid} ;
+</select>
+
+<select id="seller_inquiryCount" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(in_num) as count from inquire i,project_funding pf  where pf.pf_prnum=i.in_prnum and pf.pf_selid =#{selid};
+</select>
+
+<select id="seller_payFinshed" resultType="com.withus.spring.domain.SellerMainDTO">
+select count(f_prnum) as count from funded f where f_useremail =#{selEmail} ;
+</select>
+
+<select id="seller_monthPrice" resultType="com.withus.spring.domain.SellerMainDTO">
+SELECT 
+    SUM(IF(month = 'Jan', sumprice, 0)) AS 'Jan',
+    SUM(IF(month = 'Feb', sumprice, 0)) AS 'Feb',
+    SUM(IF(month = 'Mar', sumprice, 0)) AS 'Mar',
+    SUM(IF(month = 'Apr', sumprice, 0)) AS 'Apr',
+    SUM(IF(month = 'May', sumprice, 0)) AS 'May',
+    SUM(IF(month = 'Jun', sumprice, 0)) AS 'Jun',
+    SUM(IF(month = 'Jul', sumprice, 0)) AS 'Jul',
+    SUM(IF(month = 'Aug', sumprice, 0)) AS 'Aug',
+    SUM(IF(month = 'Sep', sumprice, 0)) AS 'Sep',
+    SUM(IF(month = 'Oct', sumprice, 0)) AS 'Oct',
+    SUM(IF(month = 'Nov', sumprice, 0)) AS 'Nov',
+    SUM(IF(month = 'Dec', sumprice, 0)) AS 'Dec',
+    SUM(sumprice) as sumprice
+    FROM (
+SELECT DATE_FORMAT(f.f_fundingdate , "%b") AS month, SUM(pf.pf_itemprice) as sumprice
+FROM project_funding pf ,funded f 
+WHERE pf.pf_prnum =f.f_prnum and pf.pf_selid =#{selid} and f.f_fundingdate &lt;= NOW() and f.f_fundingdate &gt;= Date_add(Now(),interval - 12 month)
+GROUP BY DATE_FORMAT(f.f_fundingdate, "%m-%Y")) as sub;
+</select>
+
+<select id="seller_lastTotalPrice" resultType="com.withus.spring.domain.SellerMainDTO">
+SELECT
+    SUM(IF(month = 'Jan', sumprice, 0)) AS 'Jan',
+    SUM(IF(month = 'Feb', sumprice, 0)) AS 'Feb',
+    SUM(IF(month = 'Mar', sumprice, 0)) AS 'Mar',
+    SUM(IF(month = 'Apr', sumprice, 0)) AS 'Apr',
+    SUM(IF(month = 'May', sumprice, 0)) AS 'May',
+    SUM(IF(month = 'Jun', sumprice, 0)) AS 'Jun',
+    SUM(IF(month = 'Jul', sumprice, 0)) AS 'Jul',
+    SUM(IF(month = 'Aug', sumprice, 0)) AS 'Aug',
+    SUM(IF(month = 'Sep', sumprice, 0)) AS 'Sep',
+    SUM(IF(month = 'Oct', sumprice, 0)) AS 'Oct',
+    SUM(IF(month = 'Nov', sumprice, 0)) AS 'Nov',
+    SUM(IF(month = 'Dec', sumprice, 0)) AS 'Dec'
+    FROM (
+SELECT DATE_FORMAT(f.f_fundingdate , "%b") AS month, SUM(pf.pf_itemprice) as sumprice
+FROM project_funding pf ,funded f 
+WHERE pf.pf_prnum =f.f_prnum and pf.pf_selid =#{selid} and f.f_fundingdate between '2020-01-01' and '2020-12-31'
+GROUP BY DATE_FORMAT(f.f_fundingdate, "%m-%Y")) as sub;
+</select>
+<select id="seller_popularArticle" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_prnum prnum, pf_content as content , sum(pf_viewcnt)/count(l.lk_likecnt)+count(l.lk_likecnt)*10 as popular from project_funding pf, likes l 
+		where pf.pf_prnum =l.lk_prnum group by pf_prnum order by popular desc limit 10;
+	</select>
+	
+	<select id="adminNtList" resultType="com.withus.spring.domain.NoticeDTO">
+		SELECT
+			nt_num num,
+			nt_title title,
+			nt_content content,
+			nt_regdate regDate,
+			nt_useremail userEmail
+		FROM notice
+		where nt_category ='notice' 
+		ORDER BY nt_num desc limit 10;
+	</select>
+
+</mapper>

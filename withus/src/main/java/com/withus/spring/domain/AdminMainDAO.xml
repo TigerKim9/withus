@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.AdminMainDAO">
+
+	<select id="admin_category"
+		resultType="com.withus.spring.domain.SellerMainDTO">
+		select pf_category category,count(*) as count from project_funding pf group
+		by pf_category ;
+	</select>
+	<select id="admin_totalPrice"
+		resultType="com.withus.spring.domain.SellerMainDTO">
+		SELECT
+		SUM(IF(month = 'Jan', sumprice, 0)) AS 'Jan',
+		SUM(IF(month = 'Feb', sumprice, 0)) AS 'Feb',
+		SUM(IF(month = 'Mar', sumprice, 0)) AS 'Mar',
+		SUM(IF(month = 'Apr', sumprice, 0)) AS 'Apr',
+		SUM(IF(month = 'May', sumprice, 0)) AS 'May',
+		SUM(IF(month = 'Jun', sumprice, 0)) AS 'Jun',
+		SUM(IF(month = 'Jul', sumprice, 0)) AS 'Jul',
+		SUM(IF(month = 'Aug', sumprice, 0)) AS 'Aug',
+		SUM(IF(month = 'Sep', sumprice, 0)) AS 'Sep',
+		SUM(IF(month = 'Oct', sumprice, 0)) AS 'Oct',
+		SUM(IF(month = 'Nov', sumprice, 0)) AS 'Nov',
+		SUM(IF(month = 'Dec', sumprice, 0)) AS 'Dec',
+		SUM(sumprice) as sumprice
+		FROM (
+		SELECT DATE_FORMAT(f.f_fundingdate , "%b") AS month, SUM(pf.pf_itemprice) as
+		sumprice
+		FROM project_funding pf ,funded f
+		WHERE pf.pf_prnum =f.f_prnum and f.f_fundingdate &lt;= NOW() and
+		f.f_fundingdate &gt;= Date_add(Now(),interval - 12 month)
+		GROUP BY DATE_FORMAT(f.f_fundingdate, "%m-%Y")) as sub;
+	</select>
+	<select id="admin_lastTotalPrice"
+		resultType="com.withus.spring.domain.SellerMainDTO">
+		SELECT
+		SUM(IF(month = 'Jan', sumprice, 0)) AS 'Jan',
+		SUM(IF(month = 'Feb', sumprice, 0)) AS 'Feb',
+		SUM(IF(month = 'Mar', sumprice, 0)) AS 'Mar',
+		SUM(IF(month = 'Apr', sumprice, 0)) AS 'Apr',
+		SUM(IF(month = 'May', sumprice, 0)) AS 'May',
+		SUM(IF(month = 'Jun', sumprice, 0)) AS 'Jun',
+		SUM(IF(month = 'Jul', sumprice, 0)) AS 'Jul',
+		SUM(IF(month = 'Aug', sumprice, 0)) AS 'Aug',
+		SUM(IF(month = 'Sep', sumprice, 0)) AS 'Sep',
+		SUM(IF(month = 'Oct', sumprice, 0)) AS 'Oct',
+		SUM(IF(month = 'Nov', sumprice, 0)) AS 'Nov',
+		SUM(IF(month = 'Dec', sumprice, 0)) AS 'Dec'
+		FROM (
+		SELECT DATE_FORMAT(f.f_fundingdate , "%b") AS month, SUM(pf.pf_itemprice) as
+		sumprice
+		FROM project_funding pf ,funded f
+		WHERE pf.pf_prnum =f.f_prnum and f.f_fundingdate between '2020-01-01' and
+		'2020-12-31'
+		GROUP BY DATE_FORMAT(f.f_fundingdate, "%m-%Y")) as sub;
+	</select>
+
+</mapper>

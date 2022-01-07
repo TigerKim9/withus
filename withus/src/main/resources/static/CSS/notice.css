@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* 기본 설정 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+main {
+	min-height: 580px;
+    width: 760px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+
+    font-family: 'Pretendard-Regular';
+}
+
+/* table */
+main .subject {
+    text-align: center;
+}
+
+main .main-notice-list {
+    padding: 0 15px 25px 15px;
+}
+
+main .main-notice-list .title {
+    font-size: 32px;
+}
+
+main .main-notice-list .regdate {
+    margin: 8px 0 20px 4px;
+    padding-bottom: 16px;
+    color: #808080;
+    font-size: 16px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+/* view */
+main .main-notice-view #title {
+	margin-bottom: 10px;
+	font-size: 32px;
+}
+
+main .main-notice-view #regdate {
+	font-size: 20px;
+}
+
+.main-notice-view .main-content {
+	padding: 0 20px;
+}
+
+.main-notice-view .main-content #content {
+	font-size: 24px;
+	line-height: 32px;
+}

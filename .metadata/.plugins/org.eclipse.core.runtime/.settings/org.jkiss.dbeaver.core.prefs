@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+ui.render.boolean.style.checked.align=CENTER
+ui.render.boolean.style.checked.color=default
+ui.render.boolean.style.checked.font=NORMAL
+ui.render.boolean.style.checked.text=[v]
+ui.render.boolean.style.mode=TEXT
+ui.render.boolean.style.null.align=CENTER
+ui.render.boolean.style.null.color=default
+ui.render.boolean.style.null.font=NORMAL
+ui.render.boolean.style.null.text=[NULL]
+ui.render.boolean.style.unchecked.align=CENTER
+ui.render.boolean.style.unchecked.color=default
+ui.render.boolean.style.unchecked.font=NORMAL
+ui.render.boolean.style.unchecked.text=[\u2000]

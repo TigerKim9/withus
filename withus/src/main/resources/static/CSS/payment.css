@@ -1,0 +1,101 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Pretendard-Regular';
+}
+
+main .payment-delivery {
+	width: 60%;
+	margin: 50px auto;
+	margin-bottom: 150px;
+}
+
+main .payment-delivery .subject {
+	padding-bottom: 2px;
+	margin-bottom: 12px;
+	border-bottom: 1px solid #0061a8;
+	font-size: 28px;
+}
+
+.payment-delivery #form {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.payment-delivery #form .searchBtn {
+	padding: 8px 20px;
+    border: 2px solid #8ab6d6;
+    border-radius: 3px;
+    margin-left: 6px;
+    height: 40px;
+
+    background-color: #8ab6d6;
+    font-size: 16px;
+    font-weight: bold;
+    
+    cursor: pointer;
+}
+
+.payment-delivery #form .searchBtn:hover {
+	border: 2px solid #FBE0C4;
+    background-color: #FBE0C4;
+}
+
+.payment-delivery #form #callBackDiv .sub-title {
+	margin: 20px 0 5px 10px;
+	
+	font-size: 20px;
+	color: #0061a8;
+}
+
+.payment-delivery #form #callBackDiv .input input {
+	width: 600px;
+	padding: 3px 8px;
+
+	font-size: 18px;
+}
+
+.payment-delivery #form .submitBtn {
+	padding: 8px 20px;
+    border: 2px solid #8ab6d6;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-left: 6px;
+    height: 45px;
+    width: 100px;
+    float: right;
+
+    background-color: #8ab6d6;
+    font-size: 20px;
+    font-weight: bold;
+    
+    cursor: pointer;
+}
+
+.payment-delivery #form .submitBtn:hover {
+	border: 2px solid #FBE0C4;
+    background-color: #FBE0C4;
+}
+
+@media (max-width: 1079px) {
+	main .payment-delivery .subject {
+		min-width: 460px;
+	}
+	
+	.payment-delivery #form {
+		width: 400px;
+	}
+	
+	.payment-delivery #form #callBackDiv .input input {
+		width: 400px;
+	}
+}

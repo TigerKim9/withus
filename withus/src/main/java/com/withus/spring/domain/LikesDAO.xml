@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.LikesDAO">
+
+	<select id="likesCnt" resultType="Integer">
+		SELECT count(*) FROM likes 
+		WHERE lk_likecnt = 1
+		GROUP BY lk_prnum HAVING lk_prnum = #{prnum}
+	</select>
+	
+	<select id="chkLikeCnt" resultType="int">
+		SELECT count(*) FROM likes
+		WHERE lk_prnum = #{prnum} AND lk_useremail = #{userEmail}
+	</select>
+	
+	<select id="getLikeCnt" resultType="Integer" parameterType="com.withus.spring.domain.LikesDTO">
+		SELECT lk_likecnt FROM likes
+		WHERE lk_prnum = #{prnum} AND lk_useremail = #{userEmail}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.withus.spring.domain.LikesDTO" flushCache="true">
+		INSERT INTO likes (lk_prnum, lk_useremail)
+		VALUES (#{prnum}, #{userEmail})
+	</insert>
+	
+	<update id="updateLike" parameterType="com.withus.spring.domain.LikesDTO" flushCache="true">
+		UPDATE likes
+		SET <include refid="cal"></include>
+		WHERE lk_prnum = #{prnum} AND lk_useremail = #{userEmail}
+	</update>
+	
+	<sql id="cal">
+		<if test="count == 1">
+			lk_likecnt = 0
+		</if>
+		<if test="count == 0">
+			lk_likecnt = 1
+		</if>
+	</sql>
+	
+	<delete id="deleteLike" flushCache="true">
+		DELETE likes
+		WHERE lk_useremail = #{useremail}
+	</delete>
+
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.FundedDAO">
+	<!-- 파라미터가 dto에서 값을 가져오기 때문에 DTO 변수값이랑 같게 해야함 -->
+	<insert id="fund" parameterType="com.withus.spring.domain.FundedDTO">
+		insert into funded (f_prnum , f_useremail , f_fundingdate ) 
+		values(#{prnum},#{useremail},now());
+	</insert>
+
+	<!-- 특정 이메일 아이디의 펀딩한 내용 가져오기 -->
+	<select id="myfundedlist" resultType="com.withus.spring.domain.FundedDTO">
+		 SELECT f_prnum prnum, f_fundingdate fundingdate 
+		 FROM funded
+		 WHERE f_useremail = #{useremail} ; 
+	</select>
+
+	<select id="getcnt" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_title title from project_funding pf ,funded f where pf.pf_prnum =
+		f.f_prnum and f.f_useremail = #{useremail} ;
+	</select>
+	<!--  -->
+	<select id="myprnumlist" resultType="String">
+		SELECT f_prnum prnum
+		FROM funded
+		WHERE f_useremail = #{useremail}
+	</select>
+
+	<select id="allFundedPrice" resultType="Integer">
+		SELECT sum(p.pf_itemprice)
+		FROM funded f, project_funding p
+		WHERE f.f_prnum = p.pf_prnum;
+	</select>
+
+</mapper>

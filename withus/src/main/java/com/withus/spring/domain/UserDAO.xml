@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.UserDAO">
+
+	<insert id="addUser" parameterType="com.withus.spring.domain.UserDTO">
+		INSERT INTO userdto(user_name, user_phone, user_email, user_addr, user_pw, user_cardnum, user_role)
+		VALUES(#{name}, #{phone}, #{email}, #{addr}, #{pw}, #{cardnum}, "ROLE_USER")
+	</insert>
+
+	<delete id="deleteUser" parameterType="com.withus.spring.domain.UserDTO">
+		DELETE FROM userdto
+		WHERE user_email = #{email}
+	</delete>
+	
+	<update id="addSeller" parameterType="com.withus.spring.domain.UserDTO" flushCache="true">
+		UPDATE userdto
+		SET user_role = "ROLE_MEMBER"
+		WHERE user_email = #{email}
+	</update>
+	
+	<update id="deleteSeller" parameterType="com.withus.spring.domain.UserDTO" flushCache="true">
+		UPDATE userdto
+		SET user_role = "ROLE_USER"
+		WHERE user_email = #{email}
+	</update>
+
+	<select id="findById" resultType="com.withus.spring.domain.UserDTO">
+		SELECT
+			user_name name,
+			user_pw pw,
+			user_email email,
+			user_regdate regdate
+		FROM userdto
+		WHERE user_email = #{email}	
+	</select>
+	
+	
+	<!-- 유저 프로필 확인용 쿼리문-->
+	
+		<select id="selectByEmail" resultType="com.withus.spring.domain.UserDTO">
+		SELECT
+			user_aiid aiid,
+			user_email email,
+			user_pw pw,
+			user_name name,
+			user_phone phone,
+			user_addr addr,
+			user_cash cash,
+			user_regdate regdate
+		FROM userdto
+		WHERE user_email = #{email}	
+	</select>
+	
+		<!-- 유저 프로필 수정용 쿼리문-->
+		
+	<update id="updateProfile" parameterType="com.withus.spring.domain.UserDTO">
+		UPDATE userdto 
+		SET
+			user_pw = #{pw},
+			user_phone = #{phone},
+			user_addr = #{addr}
+		WHERE user_email = #{email}	
+	</update>
+	
+	<select id="duplicateEmail" resultType="String">
+		SELECT
+			user_email email
+		FROM userdto
+		WHERE user_email = #{email}
+	</select>
+
+	<select id="selectAuthoritiesById" resultType="String">
+		SELECT user_role
+		FROM userdto
+		WHERE user_email = #{email}
+	</select>
+	
+	<select id="allUsers" resultType="int">
+		SELECT count(*) FROM userdto
+	</select>
+	
+	<select id="todayUsers" resultType="int">
+		SELECT count(*) FROM userdto WHERE date_format(user_regdate, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d');
+	</select>
+	
+	<!-- admin 이용 -->
+	<select id="select" resultType="com.withus.spring.domain.UserDTO">
+		SELECT
+			user_aiid aiid,
+			user_email email,
+			user_name name,
+			user_phone phone,
+			user_addr addr,
+			user_cash cash,
+			user_role role,
+			user_regdate regdate
+		FROM userdto
+		ORDER BY user_aiid DESC
+	</select>
+	
+	<select id="selectFromRow" resultType="com.withus.spring.domain.UserDTO">
+		<![CDATA[    
+		SELECT
+			user_aiid aiid,
+			user_email email,
+			user_name name,
+			user_phone phone,
+			user_addr addr,
+			user_cash cash,
+			user_role role,
+			user_regdate regdate
+		FROM userdto
+		ORDER BY user_aiid DESC
+		LIMIT #{from}, #{pageRows}
+		]]>
+	</select>
+	
+	<select id="countAll" resultType="int">
+		SELECT count(*) FROM userdto
+	</select>
+	
+	<select id="selectByAiid" resultType="com.withus.spring.domain.UserDTO">
+		<![CDATA[    
+		SELECT
+			user_aiid aiid,
+			user_email email,
+			user_name name,
+			user_phone phone,
+			user_addr addr,
+			user_cash cash,
+			user_role role,
+			user_regdate regdate
+		FROM userdto
+		WHERE user_aiid = #{aiid}
+		]]>
+	</select>
+	
+	<update id="updateUser" flushCache="true">
+		UPDATE userdto
+		SET
+			user_email = #{email},
+			user_name = #{name},
+			user_phone = #{phone},
+			user_addr = #{addr},
+			user_role = #{role}
+		WHERE user_aiid = #{aiid}
+	</update>
+	
+	<delete id="deleteByAiid" flushCache="true" parameterType="java.util.ArrayList">
+		DELETE FROM userdto
+		WHERE user_aiid in (
+			<foreach collection="array" item="item" index="index" separator=",">
+				${item}
+			</foreach>
+		)
+	</delete>
+
+	<select id="checkAddr" resultType="com.withus.spring.domain.UserDTO">
+	select user_addr addr from userdto where user_email=#{userEmail};	
+	</select>
+	
+	<update id="insertAddr" flushCache="true" >
+	update userdto set user_addr=#{addr} where user_email=#{useremail};
+	</update>
+
+</mapper>

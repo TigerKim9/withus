@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.InquiryDAO">
+
+	<insert id="writeQuiry" parameterType="com.withus.spring.domain.InquiryDTO">
+		insert into inquire
+		(in_prnum,in_title,in_content,in_regdate,in_useremail)
+		values
+		(#{prnum}, #{title}, #{content}, now(), #{useremail});
+	</insert>
+
+	<select id="selectQuiryAll" resultType="com.withus.spring.domain.InquiryDTO">
+		select
+			in_num num,
+			in_prnum prnum,
+			in_title title,
+			in_content content,
+			in_regdate regdate,
+			in_useremail useremail
+		from inquire
+		where in_useremail=#{useremail}
+		order by in_num desc ;
+	</select>
+
+	<select id="selectInquiryToProj" resultType="com.withus.spring.domain.InquiryDTO">
+		SELECT
+			i.in_num num,
+			i.in_prnum prnum,
+			i.in_title title,
+			i.in_content content,
+			i.in_regdate regdate,
+			i.in_useremail useremail
+		FROM inquire i, project_funding p
+		WHERE p.pf_prnum = i.in_prnum AND p.pf_selid = #{selid}
+		ORDER BY in_num DESC;
+	</select>
+	
+	<select id="selectByPrnum" resultType="com.withus.spring.domain.InquiryDTO">
+		SELECT
+			in_num num,
+			in_prnum prnum,
+			in_title title,
+			in_content content,
+			in_regdate regdate,
+			in_useremail useremail
+		FROM inquire
+		WHERE in_prnum = #{prnum}
+		ORDER BY in_num DESC
+	</select>
+
+	<select id="selectBynum" resultType="com.withus.spring.domain.InquiryDTO">
+		select
+		in_num num,
+		in_prnum prnum,
+		in_title title,
+		in_content content,
+		in_regdate regdate,
+		in_useremail useremail
+		from inquire
+		where in_num=#{num};
+	</select>
+
+	<select id="selectLastNum" resultType="com.withus.spring.domain.InquiryDTO">
+		select max(in_num) as num from inquire;
+	</select>
+
+
+</mapper>

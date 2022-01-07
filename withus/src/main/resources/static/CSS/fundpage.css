@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ONE-Mobile-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#fund_home {
+	border: none;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	margin: 0px;
+}
+
+span {
+	font-family: 'Pretendard-Regular';
+	text-overflow:ellipsis;
+}
+
+a {
+	font-family: 'ONE-Mobile-Regular';
+}
+.pic{
+	 display: block;
+    width: 700px;
+    height: 200px;
+    overflow: hidden;
+}
+
+/* li {
+	list-style: none;
+	padding: 10px;
+} */
+
+a:hover {
+	cursor: pointer;
+}
+
+#fund_home li a::before {
+	content: "";
+	height: 5px;
+	width: 10px;
+	background-color: white;
+	transition: 0.3s;
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+}
+
+#fund_home li a:hover::before {
+	width: 100%;
+	background-color: skyblue;
+}
+
+#fund_home li a {
+	float: left;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	position: relative;
+}
+
+#fund_category {
+	border: none;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	margin: 20px;
+}
+
+#fund_category a {
+	padding: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+	font-family: 'ONE-Mobile-Regular';
+}
+
+#projectlist_container {
+	width: 100%;
+	float: left;
+	/* border : 2px solid black; */
+}
+
+#projectlist_container #projectlist {
+	width: 100%;
+}
+
+
+ 
+ #projectlist a{
+
+ 	text-overflow:ellipsis;
+ }
+ 
+ 
+ .category-circleImg{
+	width : 70px;
+	height: 70px;
+	border-radius: 70%;
+	overflow: hidden; 
+ }
+

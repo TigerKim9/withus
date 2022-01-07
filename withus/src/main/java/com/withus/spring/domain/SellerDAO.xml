@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.SellerDAO">
+
+	<insert id="regSeller" parameterType="com.withus.spring.domain.SellerDTO">
+		INSERT INTO seller
+		VALUES(#{useremail}, #{business}, #{jumin}, #{selid}, #{name})
+	</insert>
+	
+	<select id="existEmail" resultType="String">
+		select sel_selid 
+		from seller
+		where sel_useremail = #{useremail} 
+	</select>
+
+	
+	<select id="cntMyProj" resultType="Integer">
+		SELECT count(*) FROM project_funding
+		WHERE pf_selid = #{selid}
+	</select>
+	
+	<select id="myProjList" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		SELECT
+			pf_prnum prnum,
+			pf_title title,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price,
+			pf_category category,
+			pf_regdate regDate,
+			pf_startdate startDate,
+			pf_enddate endDate
+		FROM project_funding
+		WHERE pf_selid = #{selid}
+		ORDER BY pf_prnum DESC
+	</select>
+	
+	<insert id="write_project" parameterType="com.withus.spring.domain.ProjectFundingDTO"
+		flushCache="true" keyProperty="prnum" useGeneratedKeys="true">
+		INSERT INTO project_funding (pf_selid, pf_title, pf_content, pf_itemprice, pf_price, pf_category, pf_filepath, pf_startdate, pf_enddate) 
+		VALUES (#{selid}, #{title}, #{content}, #{itemprice}, #{price}, #{category}, #{filePath}, #{startDate}, #{endDate});
+	</insert>
+	
+	<update id="updateProject" flushCache="true" parameterType="com.withus.spring.domain.ProjectFundingDTO">
+		UPDATE project_funding
+		SET
+			pf_title = #{title},
+			pf_content = #{content},
+			pf_itemprice = #{itemprice},
+			pf_price = #{price},
+			pf_category = #{category},
+			pf_filepath = #{filePath},
+			pf_startdate = #{startDate},
+			pf_enddate = #{endDate}
+		WHERE pf_prnum = #{prnum}
+	</update>
+		
+	<delete id="deleteByPrnum" flushCache="true">
+		DELETE FROM project_funding WHERE pf_prnum = #{prnum}
+	</delete>
+	
+</mapper>

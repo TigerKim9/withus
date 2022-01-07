@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.ProjectFundingDAO">
+
+	<select id="select" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		SELECT
+			pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_content content,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price, 
+			pf_category category, 
+			pf_filepath filepath, 
+			pf_regdate regdate,
+			pf_startdate startdate, 
+			pf_enddate enddate,
+			pf_newctn newctn
+		FROM project_funding
+		ORDER BY pf_prnum DESC	
+	</select>
+
+	<select id="opening" resultType="com.withus.spring.domain.ProjectFundingDTO">
+ 			select pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_content content,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price, 
+			pf_category category, 
+			pf_filepath filepath, 
+			pf_regdate regdate,
+			pf_startdate startdate, 
+			pf_enddate enddate,
+			pf_newctn newctn from project_funding pf where date_format(pf_startdate,'%Y-%m-%d')&lt;now();
+	</select>
+
+
+	<select id="comingsoon" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_content content,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price, 
+			pf_category category, 
+			pf_filepath filepath, 
+			pf_regdate regdate,
+			pf_startdate startdate, 
+			pf_enddate enddate,
+			pf_newctn newctn from project_funding pf where date_format(pf_startdate,'%Y-%m-%d')&gt;now();
+	</select>
+
+	<select id="sumFund" resultType="Integer">
+		SELECT sum(pf_price) 
+		FROM funded 
+		GROUP BY pf_prnum 
+		HAVING pf_prnum = #{prnum};
+	</select>
+
+	<update id="incViewCnt" parameterType="com.withus.spring.domain.ProjectFundingDTO">
+		UPDATE project_funding 
+		SET pf_viewcnt = pf_viewcnt + 1 
+		WHERE pf_prnum = #{prnum}
+	</update>
+
+	<!-- itemInfo?prnum= -->
+	<select id="selectByPrnum" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		SELECT
+			pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_content content,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price,
+			pf_category category,
+			pf_filepath filepath,
+			pf_regdate regdate,
+			pf_startdate startdate,
+			pf_enddate enddate,
+			pf_newctn newctn
+		FROM project_funding
+		WHERE pf_prnum = #{prnum}
+	</select>
+
+	<select id="fundingdateByPrnum" resultType="Date">
+		SELECT TIMEDIFF(pf_enddate, pf_startdate) 
+		FROM project_funding
+		WHERE pf_prnum = #{pf_prnum};
+	</select>
+
+	<select id="fundedPrice" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select sum(pf.pf_itemprice)as itemprice from funded f, project_funding pf 
+		where f.f_prnum=pf.pf_prnum and pf.pf_prnum=#{prnum};
+	</select>
+
+	<select id="countsupport" resultType="int">
+		SELECT count(distinct f_useremail) FROM funded WHERE f_prnum = #{prnum}
+	</select>
+
+
+	<insert id="write_project" parameterType="com.withus.spring.domain.ProjectFundingDTO" flushCache="true" keyProperty="prnum" useGeneratedKeys="true">
+		INSERT INTO project_funding (pf_selid, pf_title, pf_content, pf_itemprice, pf_price, pf_category, pf_startdate, pf_enddate) 
+		VALUES (#{selid}, #{title}, #{content}, #{itemprice}, #{price}, #{category}, #{startDate}, #{endDate});
+	</insert>
+
+	<select id="allProjects" resultType="int">
+		SELECT count(*) FROM project_funding
+	</select>
+
+	<select id="todayProjects" resultType="int">
+		SELECT count(*) FROM project_funding WHERE date_format(pf_regdate, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+	</select>
+
+	<select id="selectCategory" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_content content,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price, 
+			pf_category category, 
+			pf_filepath filepath, 
+			pf_regdate regdate,
+			pf_startdate startdate, 
+			pf_enddate enddate,
+			pf_newctn newctn
+			from project_funding pf where date_format(pf_startdate,'%Y-%m-%d')&lt;now() and pf_category=#{category};
+	</select>
+	<select id="popularArticle" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_prnum prnum, pf_content as content , sum(pf_viewcnt)/count(l.lk_likecnt)+count(l.lk_likecnt)*10 as popular from project_funding pf, likes l 
+		where pf.pf_prnum =l.lk_prnum group by pf_prnum order by popular desc limit 3;
+	</select>
+	
+	<select id="viewcount" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select pf_prnum prnum, pf_title title, pf_viewcnt viewcnt, pf_content content from project_funding pf order by pf_viewcnt desc limit 3;
+	</select>
+	
+	<select id="support" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		select  count(pf_prnum) as count,
+			pf_prnum prnum,
+			pf_title title,
+			pf_content content
+			  from project_funding pf ,funded f where pf.pf_prnum =f.f_prnum group by pf_prnum order by count desc limit 3;
+	</select>
+
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.InquiryanswerDAO">
+
+<insert id="inquiryAnswer" parameterType="com.withus.spring.domain.InquiryanswerDTO">   
+      insert into inquire_answer (ina_content,ina_regdate,ina_innum ) 
+      values(#{content},now(),#{innum});
+      
+</insert>
+
+<select id="showAnswer" resultType="com.withus.spring.domain.InquiryanswerDTO">
+select ina_num num, ina_content content, ina_regdate regdate, ina_innum innum 
+from inquire_answer where ina_innum=#{innum} order by ina_num desc ;
+</select>
+
+</mapper>

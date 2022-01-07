@@ -1,0 +1,241 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Pretendard-Regular';
+}
+
+a {
+	text-decoration: none;
+}
+
+table, th, td {
+	padding: 4px 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+main .inList {
+	width: 760px;
+	margin: 0 auto;
+	margin-top: 80px;
+	margin-bottom: 100px;
+}
+
+main .inList .subject {
+	padding-bottom: 2px;
+	border-bottom: 1px solid #0061a8;
+}
+
+.inList table {
+	width: 100%;
+}
+
+.inList table tr th {
+	font-size: 20px;
+}
+
+.inList table tr td {
+	font-size: 18px;
+}
+
+.inList table .number {
+	width: 8%;
+}
+
+.inList table .prnum {
+	width: 12%;
+}
+
+.inList table .title {
+	width: 32%;
+}
+
+.inList table .email {
+	width: 30%;
+}
+
+.inList table .regdate {
+	width: 18%;
+}
+
+.inList table .title a {
+	color: #0061a8;
+}
+
+.inList table .title a:hover {
+	color: #2978b5;
+}
+
+.inList .inList-btn {
+	float: right;
+	margin-right: 5px;
+	padding: 6px 16px;
+	border: 2px solid #8ab6d6;
+	border-radius: 3px;
+	height: 46px;
+	background-color: #8ab6d6;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.inList .inList-btn:hover {
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+}
+
+/* InquiryBynum */
+main .view-inquiry {
+	width: 760px;
+	margin: 80px auto;
+}
+
+main .view-inquiry .list2 {
+	padding-bottom: 10px;
+	margin-bottom: 8px;
+	border-bottom: 1px solid #0061a8;
+}
+
+main .view-inquiry .subject {
+	padding-bottom: 2px;
+	margin-bottom: 8px;
+}
+
+main .view-inquiry p, .form-inquiry label {
+	display: inline-block;
+	padding-bottom: 6px;
+}
+
+main .view-inquiry .sub-title {
+	width: 100px;
+	margin-right: 30px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.view-inquiry #answer_container {
+	border-bottom: 1px solid #0061a8;
+}
+
+.view-inquiry #answer_container .sub-title,
+.view-inquiry #answer_container .sub-title-c {
+	width: 100px;
+	margin-right: 30px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.view-inquiry #answer_container .div-answer {
+	margin: 15px 0px;
+}
+
+.view-inquiry #answer_container .div-answer .p-answer {
+	width: 500px;
+	height: 24px;
+	max-width: 500px;
+	line-height: 20px;
+}
+
+.view-inquiry #answer_container .div-answer .p-answer-c {
+	margin-left: 130px;
+	margin-top: 10px;
+	max-width: 500px;
+	overflow: auto;
+	font-size: 20px;
+}
+
+.view-inquiry .view-btn {
+	margin-left: 5px;
+	margin-top: 10px;
+	padding: 6px 16px;
+	border: 2px solid #8ab6d6;
+	border-radius: 3px;
+	height: 46px;
+	background-color: #8ab6d6;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.answer{
+	margin-left: 5px;
+	margin-top: 10px;
+	padding: 6px 16px;
+	border: 2px solid #8ab6d6;
+	border-radius: 3px;
+	height: 46px;
+	background-color: #8ab6d6;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.answer:hover{
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+}
+
+.view-inquiry .view-btn:hover {
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+}
+
+/* 답변 작성 */
+.form-inquiry .sub-title {
+	width: 100px;
+	margin-right: 30px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.form-inquiry input {
+	padding: 4px 6px;
+	font-size: 16px;
+}
+
+.form-inquiry textarea {
+	width: 520px;
+	height: 50px;
+	margin-top: 10px;
+	padding: 4px 6px;
+	font-size: 16px;
+}
+
+.form-inquiry .btn_group_write .answer-btn {
+	margin-left: 5px;
+	margin-top: 10px;
+	padding: 6px 16px;
+	border: 2px solid #8ab6d6;
+	border-radius: 3px;
+	height: 46px;
+	float: right;
+	background-color: #8ab6d6;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.form-inquiry .btn_group_write .answer-btn:hover {
+	border: 2px solid #FBE0C4;
+	background-color: #FBE0C4;
+}
+
+#content{
+	width: 400px;
+	height: 150px;
+	border: 1px solid #8ab6d6;
+}

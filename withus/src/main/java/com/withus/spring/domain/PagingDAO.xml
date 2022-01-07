@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withus.spring.domain.PagingDAO">
+
+	
+	<!-- 프로젝트 관리 (판매자) count -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM project_funding WHERE pf_selid = #{selid};
+	</select>
+	
+	<!-- 프로젝트 관리 (판매자) 페이징 selid -->
+	<select id="selectBoard" resultType="com.withus.spring.domain.ProjectFundingDTO">
+	SELECT pf_prnum prnum,
+         pf_selid selid,
+         pf_title title,
+         pf_content content,
+         pf_viewcnt viewcnt,
+         pf_itemprice itemprice,
+         pf_price price, 
+         pf_category category, 
+         pf_filepath filepath, 
+         pf_regdate regdate,
+         pf_startdate startdate, 
+         pf_enddate enddate,
+         pf_newctn newctn
+      FROM project_funding
+      WHERE pf_selid = #{selid}
+	order by pf_prnum DESC
+	LIMIT #{start},#{cntPage};
+	</select>
+	
+	<!-- event의 내용만 따로 count -->
+	<select id="cuserevent" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE nt_category = #{event};
+	</select>
+	
+	
+	<!-- notice의 내용만 따로 count -->
+	<select id="cusernotice" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE nt_category = #{notice};
+	</select>
+	
+	
+	<!-- notice만 출력 페이징 -->
+	<select id="userNotice" resultType="com.withus.spring.domain.NoticeDTO">
+	SELECT
+      nt_num num,
+      nt_title title,
+      nt_regdate regDate
+      FROM notice
+      WHERE nt_category = #{notice}
+      ORDER BY nt_num DESC
+	LIMIT #{start}, #{cntPage};
+	</select>
+	
+	
+	<!-- event만 출력 페이징 -->
+	<select id="userEvent" resultType="com.withus.spring.domain.NoticeDTO">
+	SELECT
+      nt_num num,
+      nt_title title,
+      nt_regdate regDate
+      FROM notice
+      WHERE nt_category = #{event}
+      ORDER BY nt_num DESC
+	LIMIT #{start}, #{cntPage};
+	</select>
+	
+<!-- notice 내용 전체적으로-->
+	<select id="countnotice" resultType="int">
+		SELECT COUNT(*) FROM notice ;
+	</select>
+
+<!-- 전체적인 카테고리 내용 -->
+<select id="selectNotice" resultType="com.withus.spring.domain.NoticeDTO">
+	SELECT nt_num num,
+    nt_title title,
+    nt_content content,
+    nt_regdate regdate,
+    nt_useremail useremail,
+    nt_category category
+    FROM notice
+	order by nt_useremail DESC
+	LIMIT #{start},#{cntPage};
+</select>
+	
+	
+	<!-- myfundedlist count -->
+	<select id="countMfl" resultType="int">
+		SELECT COUNT(*) FROM funded WHERE f_prnum = #{prnum};
+	</select>
+	
+	<!-- myfundedlist 페이징 -->
+	<select id="selectMfl" resultType="com.withus.spring.domain.FundedDTO">
+		 SELECT f_prnum prnum,f_fundingdate fundingdate 
+		 FROM funded
+		 WHERE f_useremail = #{useremail}
+		 order by f_useremail DESC
+		LIMIT #{start},#{cntPage};
+	</select>
+
+	<!-- 나의 문의 목록 count-->
+	<select id="countInquiry" resultType="int">
+		SELECT COUNT(*) FROM inquire WHERE in_useremail = #{useremail};
+	</select>
+	
+	<!-- 나의 문의 목록 페이징 -->
+	<select id="selectInquiry" resultType="com.withus.spring.domain.InquiryDTO">
+		select
+			in_num num,
+			in_prnum prnum,
+			in_title title,
+			in_content content,
+			in_regdate regdate,
+			in_useremail useremail
+			from inquire
+			where in_useremail = #{useremail}
+			order by in_num desc
+		LIMIT #{start},#{cntPage};
+	</select>
+	
+	
+	<!-- 관리자단 프로젝트 count 펀딩 보이기 -->
+	<select id="adAllProj" resultType="int">
+		SELECT count(*) FROM project_funding;
+	</select>
+	
+	<!-- 관리자단 프로젝트 펀딩 페이징  -->
+	<select id="adProjList" resultType="com.withus.spring.domain.ProjectFundingDTO">
+		SELECT
+			pf_prnum prnum,
+			pf_selid selid,
+			pf_title title,
+			pf_viewcnt viewcnt,
+			pf_itemprice itemprice,
+			pf_price price,
+			pf_category category,
+			pf_regdate regDate,
+			pf_startdate startDate,
+			pf_enddate endDate
+		FROM project_funding
+		ORDER BY pf_prnum DESC
+		LIMIT #{start},#{cntPage};
+	</select>
+
+	
+	<!-- 관리자 단 notice count 전체적으로 -->
+	<select id="adntcount" resultType="int">
+		SELECT COUNT(*) FROM notice;
+	</select>
+	
+	<!-- 관리자 단 notice 페이징 전체적으로 -->
+	<select id="ntcList" resultType="com.withus.spring.domain.NoticeDTO">
+	SELECT
+			nt_num num,
+			nt_title title,
+			nt_regdate regDate,
+			nt_useremail userEmail,
+			nt_category category
+			FROM notice
+			ORDER BY nt_num DESC
+			LIMIT #{start},#{cntPage};
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
+
+

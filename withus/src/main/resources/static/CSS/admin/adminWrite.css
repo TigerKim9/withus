@@ -1,0 +1,155 @@
+@charset "UTF-8";
+/* 기본 설정 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+
+    font-family: 'Pretendard-Regular';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+hr {
+    border-top: 1px solid #0061a8;
+}
+
+/* main */
+/* 공지사항 */
+main .main-notice-form {
+	width: 605px;
+	margin: 60px auto;
+}
+
+.main-notice-form #cg-select {
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.main-notice-form .sub-title {
+	display: inline-block;
+	margin-bottom: 8px;
+	
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.main-notice-form #writer {
+	margin-top: 3px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.main-notice-form input,
+.main-notice-form textarea {
+	width: 600px;
+	border: 2px solid #0061a8;
+	border-radius: 3px;
+}
+
+.main-notice-form input {
+	height: 30px;
+	padding: 2px 6px;
+	font-size: 18px;
+}
+
+.main-notice-form textarea {
+	height: 500px;
+	padding: 5px 6px;
+	font-size: 18px;
+}
+
+.main-notice-form .main-btn {
+	padding: 8px 20px;
+    border: 2px solid #8ab6d6;
+    border-radius: 3px;
+    margin-left: 6px;
+    height: 50px;
+
+    background-color: #8ab6d6;
+    font-size: 18px;
+    font-weight: bold;
+    
+    cursor: pointer;
+}
+
+.main-notice-form .main-btn:hover {
+    border: 2px solid #FBE0C4;
+    background-color: #FBE0C4;
+}
+
+/* 프로젝트 수정 */
+main .main-update-form {
+	width: 800px;
+	margin: 60px auto;
+}
+
+.main-update-form .sub-title {
+	display: inline-block;
+	width: 120px;
+	margin-right: 20px;
+	margin-bottom: 8px;
+	
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.main-update-form #seller {
+	display: inline-block;
+	margin-top: 3px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.main-update-form input {
+	height: 20px;
+	padding: 2px 6px;
+	font-size: 18px;
+}
+
+.main-update-form #category {
+	width: 192px;
+	padding: 2px 6px;
+	font-size: 18px;
+}
+
+.main-update-form .main-btn {
+	padding: 8px 20px;
+    border: 2px solid #8ab6d6;
+    border-radius: 3px;
+    margin-left: 6px;
+    height: 50px;
+
+    background-color: #8ab6d6;
+    font-size: 18px;
+    font-weight: bold;
+    
+    cursor: pointer;
+}
+
+.main-update-form .main-btn:hover {
+    border: 2px solid #FBE0C4;
+    background-color: #FBE0C4;
+}

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+
+    font-family: 'Pretendard-Regular';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+hr {
+    border-top: 1px solid #0061a8;
+}
+
+main {
+    width: 60%;
+    margin: 0 auto;
+
+    top: 100px;
+    left: 300px;
+    right: 50px;
+}
+
+/* view */
+main .main-view {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main-view #category {
+    font-size: 22px;
+}
+
+.main-view #title {
+    font-size: 32px;
+}
+
+.main-view #regdate {
+    font-size: 18px;
+}
+
+.main-view #content {
+    font-size: 20px;
+}
+
+main p {
+	display: inline-block;
+}
+
+main .sub-title {
+	margin-bottom: 10px;
+	margin-right: 50px;
+	width: 100px;
+	
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+main .div-content,
+main .div-newctn {
+	margin-left: 150px;
+}
+
+main .div-content .content,
+main .div-newctn .newctn {
+	font-size: 20px;
+}
+
+main .btns {
+    margin-top: 30px;
+}
+
+.btns .main-btn {
+    margin-right: 20px;
+    padding: 10px 20px;
+    border: 2px solid #8ab6d6;
+    border-radius: 3px;
+
+    background-color: #8ab6d6;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main .btns .main-btn:hover {
+    border: 2px solid #FBE0C4;
+    background-color: #FBE0C4;
+}

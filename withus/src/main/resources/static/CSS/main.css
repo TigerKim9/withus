@@ -1,0 +1,205 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Charm:wght@700&family=Kaushan+Script&family=Lobster&family=Pacifico&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Charm:wght@700&family=Kaushan+Script&family=Lobster&family=Noto+Serif+KR:wght@700&family=Pacifico&family=Permanent+Marker&display=swap');
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.main_image {
+	display: flex;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.contents_container {
+	display: flex;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.service_introduce {
+	display: flex;
+	width: 65%;
+	height: 85vh;
+	background-image: url("/images/teamwork2.jpg");
+	background-size: cover;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #FFFFFF;
+	text-shadow: 0px 1px black, 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.service_introduce > .title {
+	font-size: 3rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.ranking {
+	display: block;
+	width: 35%;
+	height: 85vh;
+	background-color: #FFFFFF;
+}
+
+.ranking > .title {
+	text-align: center;
+	margin: 1rem 0;
+	font-weight: bold;
+}
+
+.element {
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin: .25rem 0 .25rem .5rem;
+}
+
+.element > .title {
+	font-size: .75rem;
+	font-weight: normal;
+}
+
+.element > .title > a {
+	color: #000000;
+}
+
+.ranked {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin: 1rem 1rem;
+}
+
+.main_background {
+	position: absolute;
+	background-image: url("/images/kelly.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: 0;
+    filter: blur(1.3px);
+    filter: contrast(35%);
+	height: 100vh;
+	width: 100%;
+}
+
+.main_background2{
+	position: absolute;
+	background-image: url("/images/kelly.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: 0;
+    filter: blur(1.3px);
+    filter: contrast(35%);
+	height: 100vh;
+	width: 100%;
+}
+
+.main_title > .title {
+	display: block;
+	text-shadow: -4px 0 black, 0px 5px rgba(0, 0, 0, 0.2);
+	font-family: 'SBAggroB';
+	color: #fff;
+	text-align: center;
+	z-index: 2;
+	font-size: 6rem;
+	margin: auto;
+	height: 100%;
+	width: 100%;
+}
+.main2_title{
+	display: flex;
+    margin: 0 auto;
+    width: 100%;
+	
+}
+
+.main2_inline{
+    padding: 40px 80px;
+    max-width: 1440px;
+	
+}
+
+
+
+.main_title > .description {
+	display: inline-block;
+	text-shadow: -2px 0 black, 0px 1px rgba(0, 0, 0, 0.2);
+	font-family: 'Uiyeun';
+	color: #fff;
+	text-align: center;
+	z-index: 2;
+	font-size: 2rem;
+	overflow:hidden;
+	word-wrap:break-word;
+	margin: auto;
+}
+
+.div_main2{
+	position: relative;
+	text-shadow: -2px 0 black, 0px 1px rgba(0, 0, 0, 0.2);
+	 font-family: 'Uiyeun';
+	color: #fff;
+	text-align: center;
+	top: 100%;
+	left: 50%;
+	/* height: 240px ; */
+	/* margin-top: 400px; */
+	transform: translate(-50%, -50%);
+	color: white;
+	z-index: 2;
+	width: 40%;
+	font-size: 2.5rem;
+	display: inline-block;
+	overflow:hidden;word-wrap:break-word;
+	margin-left: auto; margin-right: auto;
+	
+}
+
+.div_main3{
+	position: relative;
+	text-shadow: -2px 0 black, 0px 1px rgba(0, 0, 0, 0.2);
+	 font-family: 'Uiyeun';
+	color: #fff;
+	text-align: center;
+	top: 100%;
+	left: 50%;
+	height: 240px ;
+	margin-top: 400px;
+	transform: translate(-50%, -50%);
+	color: white;
+	z-index: 2;
+	width: 40%;
+	font-size: 2.5rem;
+	display: inline-block;
+	overflow:hidden;word-wrap:break-word;
+	margin-left: auto; margin-right: auto;
+	
+}
+	
+.category{
+	margin-left: 150px;
+}
